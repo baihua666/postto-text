@@ -25,8 +25,10 @@ class EffectTestViewController: BaseViewController {
         
         self.view.backgroundColor = UIColor.gray
         
-        let viewRect = CGRect(x: 100, y: 100, width: 200, height: 300)
-        self.addView(frame: viewRect)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let viewRect = CGRect(x: 100, y: 100, width: 200, height: 300)
+            self.addView(frame: viewRect)
+        }
         
     }
 

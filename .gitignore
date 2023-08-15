@@ -1,0 +1,11 @@
+/.vs/
+/tmp/
+/out/
+/ipch/
+*.VC.db
+*.VC.VC.opendb
+/lib/
+/include/
+/*/xcuserdata/
+*.xcuserdatad
+*.DS_Store

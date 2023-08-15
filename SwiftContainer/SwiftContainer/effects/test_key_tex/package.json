@@ -34,6 +34,15 @@
 	
 	"char":{
 		"pieces":[
+            {
+                "zorder":"0",
+                "program_id":"program.default",
+                "textures":[
+                    {
+                        "id":"glyph.rgba"
+                    }
+                ]
+            },
 			{
 				"zorder":"0",
 				"program_id":"program.default",
