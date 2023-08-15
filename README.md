@@ -3,7 +3,6 @@ C++调用opengl es实现跨平台文字动画渲染引擎(当前适配iOS,window
 使用json配置文件，配置出位移、重影、描边、旋转等文字动画，支持并行、串行、组合动画，json内部支持表达式、引用内部变量、自定义变量、条件判断等扩展功能。
 
 ## demo
-
 ### barrage
 水平移动+弹跳弹幕
 [配置文件](SwiftContainer/SwiftContainer/effects/barrage/package.json)
