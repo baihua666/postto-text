@@ -1,0 +1,84 @@
+{
+    "name":"parallel",
+    
+    "version":1,
+    
+    "preview":"test.gif",
+    
+    "variable":{
+        "leading_duration": 1000,
+        "total_time":1000,
+        
+        "auto_repeat":0
+    },
+    
+    "total_time":"total_time+leading_duration",
+    
+    
+    
+    "resource":{
+        "program":{
+            "program.default":{
+                "vs_id":"vs.default",
+                "fs_id":"fs.default.first_texture"
+            }
+        },
+        "glyph":{
+            "glyph.rgba":{"type":"font"}
+        }
+    },
+    
+    "char":{
+        "pieces":[
+                  {
+                  "zorder":"0",
+                  "program_id":"program.default",
+                  "model_size":["1","0.5*char.wh"],
+                  "transaction":{
+                  "translate":["0","0.5*char.wh"]
+                  },
+                  "textures":[
+                              {
+                              "id":"glyph.rgba",
+                              "region":{
+                              "height":"0.5"
+                              }
+                              }
+                              ],
+                  "animation":[
+                               {
+                               "start_time":"leading_duration",
+                               "type":"translate",
+                               "duration":"total_time",
+                               "value":["-1","0.5*char.wh"]
+                               }
+                               ]
+                  },
+                  {
+                  "zorder":"0",
+                  "program_id":"program.default",
+                  "model_size":["1","0.5*char.wh"],
+                  "transaction":{
+                  "translate":["0","-0.5*char.wh"]
+                  },
+                  "textures":[
+                              {
+                              "id":"glyph.rgba",
+                              "region":{
+                              "top":"0.5",
+                              "height":"0.5"
+                              }
+                              }
+                              ],
+                  "animation":[
+                               {
+                               "start_time":"leading_duration",
+                               "type":"translate",
+                               "duration":"total_time",
+                               "value":["1","-0.5*char.wh"]
+                               }
+                               ]
+                  }
+                  ]
+    }
+}

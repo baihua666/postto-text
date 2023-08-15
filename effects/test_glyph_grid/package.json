@@ -1,0 +1,76 @@
+{
+	"name":"test_glyph_grid",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"cycle":1000,
+		"swing":0.1
+	},
+	
+	"total_time":"100000", 
+	
+	
+	"resource":{
+		"texture":{
+			"tex.heart":{
+				"type":"key_region",
+				"path":"heart.png",
+				"hor_frame":4
+			}
+		},
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"type":"glyph_grid",
+				"hor_count":20,
+				"ver_count":20,
+				"zorder":"0",
+				"alpha":"grid.fill_rate",
+				"create_if":"grid.fill_rate>0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"tex.heart",
+						"progress":"0.25*((grid.index.x+grid.index.y)%4)"
+					}
+				],
+				"animation":[
+					{
+						"type":"serial",
+						"loop":"1000",
+						"sub":[
+							{
+								"type":"translate",
+								"value":["obj.translate.x+(swing#(0-swing))", "obj.translate.y+(swing#(0-swing))"],
+								"duration":"cycle/2"
+							},
+							{
+								"type":"translate",
+								"value":["grid.translate.x", "grid.translate.y"],
+								"duration":"cycle/2"
+							}
+						]
+					},
+					{
+						"type":"tex_progress",
+						"duration":"300",
+						"loop":"10000",
+						"tex_index":0,
+						"value":["anim.cur_loop+1+0.25*((grid.index.x+grid.index.y)%4)"]
+					}					
+				]
+			}
+		]
+	}
+}

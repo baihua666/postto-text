@@ -1,0 +1,85 @@
+{
+	"name":"reader",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"piece_time":200
+	},
+	
+	"total_time":"piece_time*section.char_count", 
+	
+	"resource":{
+		"program":{
+			"program.bkg":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			},
+			"program.read":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_color_first_mask"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"},
+			"glyph.gray":{"type":"font","color_space":"gray"}
+		},
+		"color":{
+			"color.read":[236,216,50,255]
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.bkg",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				]
+			},
+			{
+				"create_at":"char.in_section.index*piece_time",
+				"zorder":"1",
+				"program_id":"program.read",
+				"textures":[
+					{
+						"id":"glyph.gray",
+						"region":{
+							"width":"0"
+						}
+					}
+				],
+				"colors":[
+					"color.read"
+				],
+				"model_size":["0", "char.wh"],
+				"transaction":{
+					"translate":["-1","0"]
+				},
+				"animation":[
+					{
+						"type":"translate",
+						"duration":"piece_time",
+						"value":["0","0"]
+					},
+					{
+						"type":"model_size",
+						"duration":"piece_time",
+						"value":["1","char.wh"]
+					},
+					{
+						"type":"tex_region",
+						"duration":"piece_time",
+						"value":["0","0","1","1"],
+						"tex_index":0
+					}
+				]
+			}
+		]
+	}
+}

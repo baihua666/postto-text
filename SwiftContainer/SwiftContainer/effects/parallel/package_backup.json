@@ -1,0 +1,86 @@
+{
+	"name":"parallel",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"total_time":1000
+	},
+	
+	"total_time":"total_time", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		},
+		"curve":{
+			"curve.test":{
+				"type":"bezier",
+				"control":[1,0.01,1,0.01]
+			}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"model_size":["1","0.5*char.wh"],
+				"transaction":{
+					"translate":["-1","0.5*char.wh"]
+				},
+				"textures":[
+					{
+						"id":"glyph.rgba",
+						"region":{
+							"height":"0.5"
+						}
+					}
+				],
+				"animation":[
+					{
+						"type":"translate",
+						"duration":"total_time",
+						"value":["0","0.5*char.wh"],
+						"curve_id":"curve.test"
+					}
+				]
+			},
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"model_size":["1","0.5*char.wh"],
+				"transaction":{
+					"translate":["1","-0.5*char.wh"]
+				},
+				"textures":[
+					{
+						"id":"glyph.rgba",
+						"region":{
+							"top":"0.5",
+							"height":"0.5"
+						}
+					}
+				],
+				"animation":[
+					{
+						"type":"translate",
+						"duration":"total_time",
+						"value":["0","-0.5*char.wh"]
+					}
+				]
+			}
+		]
+	}
+}

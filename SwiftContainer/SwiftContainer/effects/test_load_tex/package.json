@@ -1,0 +1,49 @@
+{
+	"name":"test_load_tex",
+
+	"version":1,
+
+	"preview":"test.gif",
+
+	"variable":{
+		"cycle":1000,
+        "piece_time":200,
+		"swing":0.1
+	},
+
+	"total_time":"cycle",
+
+
+	"resource":{
+		"texture":{
+			"tex.heart":{
+				"type":"key_region",
+				"path":"plane.png"
+			}
+		},
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+
+        "glyph":{
+          "glyph.rgba":{"type":"font"}
+        }
+	},
+
+	"char":{
+		"pieces":[
+          {
+            "zorder":"0",
+            "program_id":"program.default",
+            "textures":[
+              {
+                "id":"tex.heart"
+              }
+            ]
+          }
+		]
+	}
+}

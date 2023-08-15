@@ -1,0 +1,84 @@
+{
+	"name":"test_grid",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"cycle":1000,
+		"loop":1000,
+		"swing":1
+	},
+	
+	"total_time":"cycle*loop", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		},
+		"curve":{
+			"curve.test":{
+				"type":"bezier",
+				"control":[1,0.01,1,0.01]
+			}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"type":"grid",
+				"hor_count":5,
+				"ver_count":5,
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				],
+				"animation":[
+					{
+						"type":"serial",
+						"loop":"loop",
+						"sub":[
+							{
+								"type":"translate",
+								"duration":"cycle/2",
+								"value":[
+									{"grid.index.x":{
+										"0":"obj.translate.x-swing",
+										"grid.hor_count-1":"obj.translate.x+swing",
+										"default":"obj.translate.x"
+										}
+									},
+									{"grid.index.y":{
+										"0":"obj.translate.y+swing",
+										"grid.ver_count-1":"obj.translate.y-swing",
+										"default":"obj.translate.y"
+										}
+									}
+								]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/2",
+								"value":["grid.translate.x","grid.translate.y"]
+							}
+						]
+					}
+					
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,96 @@
+{
+	"name":"drama",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"cycle":400,
+		"loop":1000,
+		"step":8,
+        "scale":0.0052
+        
+	},
+	
+	"total_time":"3000",
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		}
+	},
+	
+	"section":{
+		"animation":[
+			{
+				"type":"serial",
+				"loop":"loop",
+				"sub":[
+					{
+						"type":"translate",
+						"value":["section.in_canvas.translate.x", "section.in_canvas.translate.y"],
+						"duration":"cycle/step"
+					},
+					{
+						"type":"translate",
+						"value":["section.in_canvas.translate.x", "section.in_canvas.translate.y-1*scale"],
+						"duration":"cycle/step"
+					},
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x-1*scale", "section.in_canvas.translate.y-1*scale"],
+                       "duration":"cycle/step"
+                    },
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x-1*scale", "section.in_canvas.translate.y-2*scale"],
+                       "duration":"cycle/step"
+                    },
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x", "section.in_canvas.translate.y-2*scale"],
+                       "duration":"cycle/step"
+                    },
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x", "section.in_canvas.translate.y-1*scale"],
+                       "duration":"cycle/step"
+                    },
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x+1*scale", "section.in_canvas.translate.y-1*scale"],
+                       "duration":"cycle/step"
+                    },
+                    {
+                       "type":"translate",
+                       "value":["section.in_canvas.translate.x+1*scale", "section.in_canvas.translate.y"],
+                       "duration":"cycle/step"
+                    }
+				]
+			}	
+		]
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				]			
+			}
+		]
+	}
+}

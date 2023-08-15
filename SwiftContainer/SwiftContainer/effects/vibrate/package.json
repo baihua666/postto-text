@@ -1,0 +1,62 @@
+{
+  "name":"vibrate",
+
+  "version":1,
+
+  "preview":"test.gif",
+
+  "variable":{
+    "space":100,
+    "scaleX":0.9,
+    "scaleY":1.1,
+    "loop":10000
+  },
+
+  "total_time":"2*space*loop",
+
+  "resource":{
+
+    "program":{
+      "program.default":{
+        "vs_id":"vs.default",
+        "fs_id":"fs.default.first_texture"
+      }
+    },
+
+    "glyph":{
+      "glyph.rgba":{"type":"font"}
+    }
+  },
+
+  "char": {
+    "pieces": [
+      {
+        "zorder": "0",
+        "program_id": "program.default",
+        "textures": [
+          {
+            "id": "glyph.rgba"
+          }
+        ],
+        "animation": [
+          {
+            "type":"serial",
+            "loop":"loop",
+            "sub":[
+              {
+                "type":"scale",
+                "duration":"space",
+                "value":["scaleX", "scaleY"]
+              },
+              {
+                "type":"scale",
+                "duration":"space",
+                "value":["1.0", "1.0"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

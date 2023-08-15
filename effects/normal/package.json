@@ -1,0 +1,38 @@
+{
+	"name":"normal",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	
+	"total_time":"0", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				]		
+			}
+		]
+	}
+}

@@ -1,0 +1,86 @@
+{
+	"name":"test_rotate_anim",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"line_rotate_cycle":5000,
+		"char_rotate_cycle":1000
+	},
+	
+	"total_time":"line_rotate_cycle*10", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.bkg":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_color"
+			},
+			"program.char":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		},
+		"color":{
+			"color.line_bkg":[255,255,255,125],
+			"color.char_bkg":[0,255,0,125]
+		}
+	},
+	
+	"line":{
+		"pieces":[
+			{
+				"alpha":"1",
+				"zorder":"0",
+				"program_id":"program.bkg",
+				"colors":["color.line_bkg"]
+			}
+		],
+		"animation":[
+			{
+				"start_time":"0",
+				"type":"rotate",
+				"value":["obj.rotate.cx","obj.rotate.cy","0","0","obj.rotate.angle.z+360"],
+				"duration":"line_rotate_cycle",
+				"loop":"10000"
+			}
+		]		
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"1",
+				"program_id":"program.bkg",
+				"colors":[
+					"color.char_bkg"
+				]		
+			},
+			{
+				"zorder":"2",
+				"program_id":"program.char",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				]			
+			}
+		],
+		"animation":[
+			{
+				"start_time":"0",
+				"type":"rotate",
+				"value":["obj.rotate.cx","obj.rotate.cy","0","0","obj.rotate.angle.z+360"],
+				"duration":"char_rotate_cycle",
+				"loop":"10000"
+			}
+		]
+	}
+}

@@ -1,0 +1,87 @@
+{
+  "name":"disappear",
+
+  "version":1,
+
+  "preview":"test.gif",
+
+  "variable":{
+    "piece_time":100,
+    "static_time_one":500,
+    "static_time_two":2000,
+    "loop":500
+  },
+
+  "total_time":"loop*(2*piece_time*section.char_count+static_time_two+static_time_one)",
+
+  "resource":{
+
+    "shader":{
+      "fs.disappear":{
+        "type":"fs",
+        "source":"fs.disappear.glsl"
+      }
+    },
+
+    "program":{
+      "program.disappear":{
+        "vs_id":"vs.default",
+        "fs_id":"fs.disappear"
+      }
+    },
+
+    "texture":{
+      "tex.mix":{
+        "type":"key_region",
+        "path":"mix.png"
+      }
+    },
+
+    "glyph":{
+      "glyph.rgba":{"type":"font"}
+    }
+  },
+
+  "char":{
+    "pieces":[
+      {
+        "zorder":"1",
+        "program_id":"program.disappear",
+        "textures":[
+          {
+            "id":"glyph.rgba"
+          },
+          {
+            "id":"tex.mix",
+            "region":{
+              "left":"2/3",
+              "top":"0",
+              "width":"1/3",
+              "height":"1"
+            }
+          }
+        ],
+        "animation":[
+          {
+            "type":"tex_region",
+            "duration":"piece_time",
+            "loop":"loop",
+            "start_time":"char.in_section.index*piece_time",
+            "loop_wait_time":"2*piece_time*section.char_count+static_time_two+static_time_one",
+            "tex_index":1,
+            "value":["0","0","1/3","1"]
+          },
+          {
+            "type":"tex_region",
+            "duration":"piece_time",
+            "loop":"loop",
+            "start_time":"(2*section.char_count - char.in_section.index)*piece_time+static_time_two",
+            "loop_wait_time":"2*piece_time*section.char_count+static_time_two+static_time_one",
+            "tex_index":1,
+            "value":["2/3","0","1/3","1"]
+          }
+        ]
+      }
+    ]
+  }
+}

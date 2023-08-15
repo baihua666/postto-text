@@ -1,0 +1,145 @@
+{
+	"name":"illusion",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"cycle":300,
+		"loop":1000,
+		"swing":0.08
+	},
+	
+	"total_time":"cycle*loop", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"color":{
+			"halo.white":[255,255,255],
+			"halo.red":[236,26,26],
+			"halo.blue":[27,203,235]
+		},
+		"glyph":{
+			"glyph.source":{"type":"font","color_id":"halo.white"},
+			"glyph.halo.red":{"type":"font","color_id":"halo.red"},
+			"glyph.halo.blue":{"type":"font","color_id":"halo.blue"}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.halo.blue"
+					}
+				],
+				"animation":[
+					{
+						"type":"serial",
+						"loop":"loop",
+						"sub":[
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","-swing"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","0"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["swing","0"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","0"]
+							}
+						]
+					}
+				]	
+			},
+			{
+				"zorder":"1",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.halo.red"
+					}
+				],
+				"animation":[
+					{
+						"type":"serial",
+						"loop":"loop",
+						"sub":[
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","swing"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","0"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["-swing","0"]
+							},
+							{
+								"type":"translate",
+								"duration":"cycle/4",
+								"value":["0","0"]
+							}
+						]
+					}
+				]		
+			},
+			{
+				"zorder":"2",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.source"
+					}
+				]			
+			}
+		]
+	}
+
+	"section":{
+		"animation":[
+			{
+				"type":"serial",
+				"loop":"loop",
+				"sub":[
+					{
+						"type":"translate",
+						"value":["obj.translate.x+(swing#(0-swing))", "obj.translate.y+(swing#(0-swing))"],
+						"duration":"cycle/2"
+					},
+					{
+						"type":"translate",
+						"value":["section.in_canvas.translate.x", "section.in_canvas.translate.y"],
+						"duration":"cycle/2"
+					}
+				]
+			}	
+		]
+	},
+}

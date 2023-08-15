@@ -1,0 +1,58 @@
+{
+	"name":"test_key_tex",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"piece_time":300
+	},
+	
+	"total_time":"piece_time*section.char_count", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		},
+		"texture":{
+			"tex.heart":{
+				"type":"key_region",
+				"path":"heart.png",
+				"hor_frame":4
+			}
+		}
+	},
+	
+	"char":{
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"tex.heart",
+						"progress":"0.25*(char.in_line.index%4)"
+					}
+				],
+				"animation":[
+					{
+						"type":"tex_progress",
+						"duration":"piece_time",
+						"loop":"10000",
+						"tex_index":0,
+						"value":["anim.cur_loop+1+0.25*(char.in_line.index%4)"]
+					}
+				]			
+			}
+		]
+	}
+}

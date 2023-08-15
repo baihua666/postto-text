@@ -1,0 +1,103 @@
+{
+  "name":"test_lines",
+
+  "version":1,
+
+  "preview":"test.gif",
+
+  "variable":{
+    "cycle":5000,
+    "loop":1,
+    "swing":0.08,
+    "space":300
+  },
+
+  "total_time":"cycle*loop",
+
+  "resource":{
+    "program":{
+      "program.default":{
+        "vs_id":"vs.default",
+        "fs_id":"fs.default.first_texture"
+      }
+    },
+
+    "glyph":{
+      "glyph.rgba":{"type":"font"}
+    }
+  },
+
+  "section":{
+    "animation": [
+      {
+        "type":"serial",
+        "loop":"loop",
+        "sub": [
+          {
+            "type": "translate",
+            "value": ["-(1+section.in_canvas.scale.x)", "section.in_canvas.translate.y"],
+            "duration": "0"
+          },
+          {
+            "type": "translate",
+            "value": ["1+section.in_canvas.scale.x", "section.in_canvas.translate.y"],
+            "duration": "cycle"
+          }
+        ]
+      }
+    ]
+
+  },
+
+  "line":{
+    "animation":[
+      {
+        "type":"serial",
+        "loop":"cycle*loop/space",
+        "sub":[
+          {
+            "type":"translate",
+            "value":["obj.translate.x",
+                {
+                  "line.in_section.index % 2 > 0": {
+                    "true": "obj.translate.y+swing*3",
+                    "false": "obj.translate.y"
+                  }
+                }
+            ],
+            "duration":"space"
+          },
+          {
+            "type":"translate",
+            "value":["line.in_section.translate.x", "line.in_section.translate.y"],
+            "duration":"space"
+          },
+          {
+            "type":"translate",
+            "value":["obj.translate.x", "obj.translate.y+(-swing)"],
+            "duration":"space"
+          },
+          {
+            "type":"translate",
+            "value":["line.in_section.translate.x", "line.in_section.translate.y"],
+            "duration":"space"
+          }
+        ]
+      }
+    ]
+  },
+
+  "char":{
+    "pieces":[
+      {
+        "zorder":"1",
+        "program_id":"program.default",
+        "textures":[
+          {
+            "id":"glyph.rgba"
+          }
+        ]
+      }
+    ]
+  }
+}

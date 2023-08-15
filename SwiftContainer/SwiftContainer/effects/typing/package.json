@@ -1,0 +1,45 @@
+{
+	"name":"typing",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+    "variable":{
+        "piece_time":150,
+        "tailing_duration": 1000,
+        "auto_repeat":0
+    },
+    
+    "total_time":"piece_time*(section.char_count+1)+tailing_duration",
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		}
+	},
+	
+	"char":{
+		"create_at":"piece_time*(char.in_section.index+1)",
+		
+		"pieces":[
+			{
+				"zorder":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				]		
+			}
+		]
+	}
+}

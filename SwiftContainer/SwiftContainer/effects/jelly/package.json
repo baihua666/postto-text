@@ -1,0 +1,167 @@
+{
+  "name":"jelly",
+
+  "version":1,
+
+  "preview":"test.gif",
+
+  "variable":{
+    "cycle":2500,
+    "loop":1,
+    "swing":0.4,
+    "space1":660,
+    "space2":330,
+    "space3":250
+  },
+
+  "total_time":"cycle*loop",
+
+  "resource":{
+    "program":{
+      "program.default":{
+        "vs_id":"vs.default",
+        "fs_id":"fs.default.first_texture"
+      }
+    },
+
+    "glyph":{
+      "glyph.rgba":{"type":"font"}
+    }
+  },
+
+  "char":{
+    "pieces":[
+      {
+        "zorder":"1",
+        "program_id":"program.default",
+        "textures":[
+          {
+            "id":"glyph.rgba"
+          }
+        ],
+        "animation":[
+          {
+            "type":"parallel",
+            "loop":"loop",
+            "loop_wait_time":"500",
+            "sub":[
+              {
+                "type": "serial",
+                "loop": 1,
+                "sub": [
+                  {
+                    "type": "translate",
+                    "duration": "space1",
+                    "value": [
+                      {
+                        "char.in_line.index > (line.char_count/2)": {
+                          "true": "-swing*(char.in_line.index - line.char_count/2)",
+                          "false": "swing*(line.char_count/2 - char.in_line.index)"
+                        }
+                      },
+                      "0"
+                    ]
+                  },
+                  {
+                    "type": "translate",
+                    "duration": "space2",
+                    "value": [
+                      {
+                        "char.in_line.index > ((line.char_count)/2)": {
+                          "true": "3*swing/5*(char.in_line.index - line.char_count/2)",
+                          "false": "-(3*swing/5)*(line.char_count/2 - char.in_line.index)"
+                        }
+                      },
+                      "0"
+                    ]
+                  },
+                  {
+                    "type": "translate",
+                    "duration": "space3",
+                    "value": [
+                      {
+                        "char.in_line.index > ((line.char_count)/2)": {
+                          "true": "-(3*swing/5)*(char.in_line.index - line.char_count/2)",
+                          "false": "3*swing/5*(line.char_count/2 - char.in_line.index)"
+                        }
+                      },
+                      "0"
+                    ]
+                  },
+                  {
+                    "type": "translate",
+                    "duration": "space3",
+                    "value": [
+                      {
+                        "char.in_line.index > ((line.char_count)/2)": {
+                          "true": "swing/5*(char.in_line.index - line.char_count/2)",
+                          "false": "-(swing/5)*(line.char_count/2 - char.in_line.index)"
+                        }
+                      },
+                      "0"
+                    ]
+                  },
+                  {
+                    "type": "translate",
+                    "duration": "space3",
+                    "value": [
+                      {
+                        "char.in_line.index > ((line.char_count)/2)": {
+                          "true": "-(swing/5)*(char.in_line.index - line.char_count/2)",
+                          "false": "swing/5*(line.char_count/2 - char.in_line.index)"
+                        }
+                      },
+                      "0"
+                    ]
+                  },
+                  {
+                    "type": "translate",
+                    "duration": "space3",
+                    "value": ["0", "0"]
+                  }
+                ]
+              },
+
+              {
+                "type": "serial",
+                "loop": 1,
+                "sub": [
+                  {
+                    "type":"rotate",
+                    "duration": "space1",
+                    "value":["obj.rotate.cx","-1","0","0","0"]
+                  },
+                  {
+                    "type":"rotate",
+                    "duration": "space2",
+                    "value":["obj.rotate.cx","-1","0","0","obj.rotate.angle.z+6"]
+                  },
+                  {
+                    "type":"rotate",
+                    "duration": "space3",
+                    "value":["obj.rotate.cx","-1","0","0","obj.rotate.angle.z-12"]
+                  },
+                  {
+                    "type":"rotate",
+                    "duration": "space3",
+                    "value":["obj.rotate.cx","-1","0","0","obj.rotate.angle.z+9"]
+                  },
+                  {
+                    "type":"rotate",
+                    "duration": "space3",
+                    "value":["obj.rotate.cx","-1","0","0","obj.rotate.angle.z-5"]
+                  },
+                  {
+                    "type":"rotate",
+                    "duration": "space3",
+                    "value":["obj.rotate.cx","-1","0","0","obj.rotate.angle.z+2"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

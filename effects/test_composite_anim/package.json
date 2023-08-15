@@ -1,0 +1,73 @@
+{
+	"name":"test_composite_anim",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"piece_time":1000,
+		"loop_wait":2000
+	},
+	
+	"total_time":"4*(piece_time + loop_wait)*section.char_count", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		}
+	},
+	
+	"char":{
+		"create_at":"piece_time*char.in_section.index",
+		"pieces":[
+			{
+				"zorder":"0",
+				"alpha":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				],
+				"animation":[
+					{
+						"type":"serial",
+						"loop":"3",
+						"loop_wait_time":"loop_wait",
+						"sub":[
+							{
+								"type":"alpha",
+								"duration":"piece_time",
+								"value":["1.0"]
+							},
+							{
+								"type":"alpha",
+								"duration":"piece_time",
+								"value":["0"]
+							},
+							{
+								"type":"alpha",
+								"duration":"piece_time",
+								"value":["1.0"]
+							},
+							{
+								"type":"alpha",
+								"duration":"piece_time",
+								"value":["0"]
+							}
+						]
+					}
+				]			
+			}
+		]
+	}
+}

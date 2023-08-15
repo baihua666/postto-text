@@ -1,0 +1,50 @@
+{
+	"name":"test_alpha_anim",
+	
+	"version":1,
+	
+	"preview":"test.gif",
+	
+	"variable":{
+		"piece_time":1000
+	},
+	
+	"total_time":"piece_time*section.char_count", 
+	
+	
+	
+	"resource":{
+		"program":{
+			"program.default":{
+				"vs_id":"vs.default",
+				"fs_id":"fs.default.first_texture"
+			}
+		},
+		"glyph":{
+			"glyph.rgba":{"type":"font"}
+		}
+	},
+	
+	"char":{
+		"create_at":"piece_time*char.in_section.index",
+		"pieces":[
+			{
+				"zorder":"0",
+				"alpha":"0",
+				"program_id":"program.default",
+				"textures":[
+					{
+						"id":"glyph.rgba"
+					}
+				],
+				"animation":[
+					{
+						"type":"alpha",
+						"duration":"piece_time",
+						"value":["1.0"]
+					}
+				]			
+			}
+		]
+	}
+}
